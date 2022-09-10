@@ -9,6 +9,7 @@ public class MultiplicationTable {
         Scanner in = new Scanner(System.in);
         int input = in.nextInt();
         printTable(input);
+
     }
 
     private static void printTable(int input) {
