@@ -25,7 +25,7 @@ public class PairsWithGivenDifference {
         int j = 1;
 
         //above variables to verify if the pair getting repeated or not
-        //if repeated increament i and j only
+        //if repeated increment i and j only
         int p1= -1;
         int p2= -1;
 
