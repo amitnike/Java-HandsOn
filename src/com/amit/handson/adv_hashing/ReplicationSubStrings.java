@@ -12,17 +12,18 @@ import java.util.Set;
 public class ReplicationSubStrings {
     public static  void main(String[] args){
         int A =2;
-        String B = "ababa";
+        String B = "abab";
         System.out.println(replicationSubString(A,B));
     }
 
     private static int replicationSubString(int A,String B) {
-        int ret = 0;
+        int ret = 1;
 
         HashMap<Character,Integer> map = new HashMap<>();
         for(int i=0;i<B.length();i++){
             if(map.containsKey(B.charAt(i))){
-                map.replace(B.charAt(i),map.get(B.charAt(i)) + 1);
+                int val = map.get(B.charAt(i));
+                map.put(B.charAt(i),val + 1);
             }
             else{
                 map.put(B.charAt(i),1);
