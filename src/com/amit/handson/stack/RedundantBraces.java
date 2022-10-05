@@ -1,5 +1,7 @@
 package com.amit.handson.stack;
 
+import java.util.Stack;
+
 //Given a string A denoting an expression. It contains the following operators '+', '-', '*', '/'.
 //
 //Check whether A has redundant braces or not.
@@ -17,48 +19,28 @@ public class RedundantBraces {
     }
 
     private int solve(String A) {
-        int out = 1;
-        arr = new char[A.length()];
+            Stack< Character > stack = new Stack < > ();
 
-        for(int i=0;i<A.length();i++){
-            char ch = A.charAt(i);
+            for (int i = 0; i < A.length(); i++) {
+                char ch = A.charAt(i);
 
-            if (ch == '('){
-                this.push(ch);
-            } else if (ch == '+' || ch == '*' ||ch == '/' || ch == '-') {
-                this.pop();
+                if (ch >= 'a' && ch <= 'z') {
+                    continue;
+                } else if (ch == '(') {
+                    stack.push(ch);
+                } else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
+                    stack.push(ch);
+                } else if (ch == ')') {
+                    if (!stack.isEmpty() && stack.peek() == '(') {
+                        stack.pop();
+                        return 1;
+                    }
+                    while (!stack.isEmpty() && stack.peek() != '(') {
+                        stack.pop();
+                    }
+                    stack.pop(); //it will pop out the ')'
+                }
             }
-        }
-
-        if(this.isEmpty()){
-            out = 0;
-        } else {
-            out = 1;
-        }
-        return  out;
+            return 0;
     }
-
-    public  void push(char x){
-        top ++;
-        arr[top] = x;
-    }
-
-    public  void pop(){
-        if(!isEmpty()){
-            top--;
-        }
-    }
-
-    public  boolean isEmpty(){
-        return top == -1;
-    }
-
-    public  char top(){
-        if(!isEmpty()){
-            return arr[top];
-        }
-        return '0';
-    }
-
-
 }
